@@ -1,0 +1,14 @@
+
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<h1>Joni has written {{ zak.count }} blog{{ zak.count|pluralize }} </h1>
+
+{% for z in zak %}
+<a href="{% url 'blog:detail' z.id %}"><h1>{{z.title}}</h1></a>
+<p>{{z.date|date:"D d M Y"}}</p>
+{{z.description|striptags|truncatechars:100}}
+
+{% endfor %}
+
+{% endblock %}
